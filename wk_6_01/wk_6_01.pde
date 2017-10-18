@@ -26,7 +26,7 @@ void draw() {
     
     for ( int i = 0; i< num - 1 ; i++){
     xpos[i]= xpos[i+1];
-    ypos[i]= ypos[i+1];
+    ypos[i]= ypos[i+1]; //
     
   }
   //lenght of array changes, new position of shape appears
