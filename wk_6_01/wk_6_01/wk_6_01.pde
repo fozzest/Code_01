@@ -3,7 +3,7 @@
 //update for wk 06
 //implentation of arrays
 
-int num = 80;
+int num = 200;
 
 float[] xpos = new float[num];
 float[] ypos = new float[num];
@@ -21,26 +21,26 @@ void setup() {
 
 void draw() {
   background( 223, 255, 144);
-  //if (g <= 1000  ){
-  //  g--;
-  //}
-
-  
-
 
   if (switchState) {
     
-    for ( int i = 0; i< num ; i++){
+    for ( int i = 0; i< num - 1 ; i++){
     xpos[i]= xpos[i+1];
     ypos[i]= ypos[i+1];
+    
   }
-  xpos[xpos.length-1] = g - 1;
-  ypos[ypos.length-1] = 500;
-    //draw everything 
-  for(int i = 0; i<xpos.length; i++){
+  //lenght of array changes, new position of shape appears
+  xpos[xpos.length-1] = mouseX;
+  ypos[ypos.length-1] = mouseY;
+     
+  for(int i = 0; i<num; i++){
     noStroke();
-    fill((70-i*3),(108-i*2),(22-i*1));
+    fill((70-i*3),(108-i*2),(22-i*1)); 
+    //same array being applied to colour of shape
+    //as array changes, it is simultaneously altering colour
+    
     ellipse(xpos[i],ypos[i],i,i);
+    
   }
   }
 
