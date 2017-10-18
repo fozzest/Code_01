@@ -6,7 +6,6 @@
 int num = 200;
 
 float[] xpos = new float[num];
-float[] ypos = new float[num];
 
 boolean switchState = false;
 float size = 300;
