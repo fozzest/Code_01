@@ -4,6 +4,15 @@
 //implentation of arrays
 
 int num = 200;
+float n = 5;
+
+int ball = 50;
+
+float x[] = new float[ball];
+float y[] = new float[ball];
+float r[] = new float[ball];
+color c[] = new color[ball];
+
 
 float[] xpos = new float[num];
 float[] ypos = new float[num];
@@ -17,6 +26,14 @@ void setup() {
   background( 223, 255, 144);
   noStroke();
   smooth(); //examples online use this. it is used to makes shapes have anti-aliasing
+
+  for (int i = 0; i < ball; i++) {
+    r[1] = 10;
+    x[i] = 1000;
+    y[i] = 400;
+    //fill(c[i] = color(random(100), random(255), random(100)));
+  }
+
 }
 
 void draw() {
@@ -30,12 +47,16 @@ void draw() {
     
   }
   //lenght of array changes, new position of shape appears
-  xpos[xpos.length-1] = mouseX;
-  ypos[ypos.length-1] = mouseY;
+  xpos[xpos.length-1] =  1000 - n;
+  ypos[ypos.length-1] = 400;
+  
+  if (n<1000){
+    n = n + 4;
+  }
      
   for(int i = 0; i<num; i++){
     noStroke();
-    fill((70-i*3),(108-i*2),(22-i*1)); 
+    fill((70-i*2),(200-i),(22-i)); 
     //same array being applied to colour of shape
     //as array changes, it is simultaneously altering colour
     
@@ -55,25 +76,40 @@ void draw() {
   ellipse(1000, 400, size, size);
 
   if (mousePressed) {
+    //below is the original solution to the expanding rings
+  
+    
     size++;
-    sz2= sz2 + 4;
-    fill(0, 255, 0);
-    ellipse (1000, 400, sz2, sz2);
-    fill(169, 219, 46);
-    ellipse (1000, 400, sz2-10, sz2 -10);
-    fill(0, 255, 0);
-    ellipse (1000, 400, sz2-50, sz2-50);
-    fill(38, 54, 11);
-    ellipse (1000, 400, sz2-90, sz2 -90);
-    if (sz2>size) {
-      sz2 = 0;
+    //sz2= sz2 + 4;
+    //fill(0, 255, 0);
+    //ellipse (1000, 400, sz2, sz2);
+    //fill(169, 219, 46);
+    //ellipse (1000, 400, sz2-10, sz2 -10);
+    //fill(0, 255, 0);
+    //ellipse (1000, 400, sz2-50, sz2-50);
+    //fill(38, 54, 11);
+    //ellipse (1000, 400, sz2-90, sz2 -90);
+    //if (sz2>size) {
+    //  sz2 = 0;
 
-      if (size>600) {
-        size=0;
+//      if (size>600) {
+//        size=0;
+
+// now, here is a solution using arrays
+
+ for (int i = 0; i < ball; i++) {
+    fill(c[i] = color(random(100), random(255), random(100)));
+    ellipse(x[i], y[i], r[i]*2, r[i]*2);
+    if (r[i] < 300){
+      r[i] = r[i] +5;
+    }else{
+      
+       r[i]= 0;
+
       }
     }
   }
-}
+    }
 
 
 //void drawCircle(float x, float y) {
