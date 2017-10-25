@@ -43,8 +43,18 @@ void draw(){
      image(sprite[spriteNum],400,400);
     }
     
+    
+    if (frameCount >= 144) {
+     boolean rising = true;
+     image(sprite[spriteNum],400,100);
+    }
+    
+    if (frameCount >= 192) {
+     boolean rising = true;
+     image(sprite[spriteNum],100,400);
+    }
       
-    if (frameCount == 144){
+    if (frameCount == 240){
       frameCount = 0;
       boolean rising = false;
     }
