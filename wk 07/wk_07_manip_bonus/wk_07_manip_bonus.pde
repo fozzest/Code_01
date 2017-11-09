@@ -1,9 +1,9 @@
-import processing.pdf.*;
+//import processing.pdf.*;
 
 PImage img;
 int y = 0;
 void setup() {
-  size(2000, 950, PDF, "palmbonus");
+  size(2000, 950);
   img = loadImage("palms.jpg");
   noStroke();
   rectMode(CENTER);
@@ -49,6 +49,6 @@ void draw() {
       }
     }
     
-  println("Finished.");
-  exit();
+  //println("Finished.");
+  //exit();
   }
