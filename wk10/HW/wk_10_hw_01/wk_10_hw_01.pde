@@ -40,13 +40,13 @@ void draw() {
   //particles.add(new Particle(width, height/2));
   //particles.add(new Particle(width, height));
   //particles.add(new Particle(width, 0));
-  particles.add(new Particle(width/2, height/2));
+  particles.add(new Particle(750, 500));
   pushMatrix();
   translate(0,0);
   //float ro = 0;
   //translate(0,0);
-  rotate(PI);
-  particles.add(new Particle(width/2, height/2));
+  rotate(radians(90));
+  particles.add(new Particle(745, 520));
   
   //ro += 1;
   
@@ -69,6 +69,7 @@ void draw() {
     //p.addAttract(width, height,10);
     //p.addAttract(width/2, height/2,10);
     //p.contact(0,0,20);
+    p.addRepel(0,0,8);
     p.update();
     p.display();
     

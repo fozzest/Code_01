@@ -34,31 +34,47 @@ class Particle {
     //stroke(255);
     ellipse(pos.x, pos.y, s, s);
     if (life<=10000) {
-      r=r+0.1;
+      r=r+1;
     }
   }
 
   void addAttract(float x, float y, float maxForce) {
     //float angle = atan2(y - pos.y, x - pos.x);
-    if (a.x<100 || a.x> 200) {
-      //float angle = random(TWO_PI);
+    if (a.x<550 || a.x> 700) {
+      //float angle = atan2(y - pos.y, x - pos.x);
       float angle = atan2(mouseY-height/2, mouseX-width/2);
       //attempting to get the entire 'belt' to rotate around the planet via mouse position
-      float magnitude = 700;
+      float magnitude = 600;
 
       float forceStr = maxForce / ( dist(pos.x, x, pos.y, y));
       PVector newForce = new PVector(sin(angle) * magnitude, sin(angle) * magnitude);
       newForce = newForce.mult(forceStr);
       acc.add(newForce);
     }
+  }
 
-
-    if (a.x > 100 & a.x < 200) {
-      //float angle = random(TWO_PI);
-      float magnitude = 700;
+void addRepel(float x, float y, float maxForce) {
+    if (a.x > 550 & a.x < 700 & a.y<500) {
+      //float angle = atan2(y + pos.y, x + pos.x);
+       //float angle = atan2(mouseY-height/2, mouseX-width/2);
+      //attempting to get the entire 'belt' to rotate around the planet via mouse position
+      float magnitude = 600;
 
       float forceStr = maxForce / ( dist(pos.x, x, pos.y, y));
-      PVector newForce = new PVector(-sin(angle) * magnitude, sin(angle) * magnitude);
+      PVector newForce = new PVector(tan(-angle*2) * magnitude, tan(-angle*2) * magnitude);
+      newForce = newForce.mult(forceStr);
+      acc.add(newForce);
+    }
+    if (a.x > 200 & a.x < 500 & a.y>500) {
+      //float angle = atan2(y + pos.y, x + pos.x);
+       //float angle = atan2(mouseY-height/2, mouseX-width/2);
+      
+      float magnitude = 600;
+
+      float forceStr = maxForce / ( dist(pos.x, x, pos.y, y));
+      PVector newForce = new PVector(tan(-angle*2) * magnitude, tan(-angle*2) * magnitude);
+      newForce = newForce.mult(forceStr);
+      acc.add(newForce);
     }
   }
 }
