@@ -2,8 +2,8 @@ class Paddle {
   float x;
   float y;
   float w;
-float g1;
-float g2;
+  float g1;
+  float g2;
   float h1;
   float h2;
   int playerNum;

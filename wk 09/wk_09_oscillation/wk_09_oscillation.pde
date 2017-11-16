@@ -63,5 +63,5 @@ void draw() {
     //distribute the liens along the y azis using 'w'
     //by cutting the lines by their height, it creates an equal distribution on either end of the y axis
   }
-  he++;
+  //he++;
 }
