@@ -1,5 +1,5 @@
 //goal is to have a planet with a ring of moving material
-//asteroid pushes through material, altering it's course
+//asteroid pushes through material, altering material's course
 
 
 ArrayList<Particle> particles = new ArrayList<Particle>();

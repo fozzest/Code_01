@@ -26,32 +26,39 @@ class Particle {
   }
 
   void display() {
-
+    float r;
+    r=200;
     float s = map(life, 1000, 0, 1, 0);
-    fill(#FAA51C);
+    fill(r, 136, 0);
     noStroke();
     //stroke(255);
     ellipse(pos.x, pos.y, s, s);
+    if (life<=10000) {
+      r=r+0.1;
+    }
   }
 
   void addAttract(float x, float y, float maxForce) {
     //float angle = atan2(y - pos.y, x - pos.x);
-    float angle = random(TWO_PI);
-    float magnitude = 700;
+    if (a.x<100 || a.x> 200) {
+      //float angle = random(TWO_PI);
+      float angle = atan2(mouseY-height/2, mouseX-width/2);
+      //attempting to get the entire 'belt' to rotate around the planet via mouse position
+      float magnitude = 700;
 
-    float forceStr = maxForce / ( dist(pos.x, x, pos.y, y));
-    PVector newForce = new PVector(sin(angle) * magnitude, sin(angle) * magnitude);
-    newForce = newForce.mult(forceStr);
-    acc.add(newForce);
-  
-  
+      float forceStr = maxForce / ( dist(pos.x, x, pos.y, y));
+      PVector newForce = new PVector(sin(angle) * magnitude, sin(angle) * magnitude);
+      newForce = newForce.mult(forceStr);
+      acc.add(newForce);
+    }
+
+
     if (a.x > 100 & a.x < 200) {
-      float angle = random(TWO_PI);
+      //float angle = random(TWO_PI);
       float magnitude = 700;
 
       float forceStr = maxForce / ( dist(pos.x, x, pos.y, y));
       PVector newForce = new PVector(-sin(angle) * magnitude, sin(angle) * magnitude);
-    
-  }
+    }
   }
 }
