@@ -28,7 +28,7 @@ void draw() {
   for (float i=-0.5;i<PI;i+=0.01) {
     beginShape();
     for (float j=-sin(i)*r;j<sin(i)*r+sin(i);j+=sin(i)*20) {
-      curveVertex(j, map(cos(i)*r+sin(rate-(j/40))*abs(i*10), 0,100,-10,-mouseX));
+      curveVertex(j, map(cos(i)*r-sin(rate-(j/40))*abs(i*10), 0,200,-10,-mouseX));
     }
     endShape();
     
@@ -50,7 +50,7 @@ void draw() {
   triangle(mouseX,mouseY,550,250, 300,500);
   fill(255);
   triangle(width,0,300,0, 550,250);
-  triangle(50,250,300,0, -100,-100);
+  triangle(50,250,300,0, -100,-0);
   triangle(0,height,300,500, 50,250);
   
   textSize(20);
