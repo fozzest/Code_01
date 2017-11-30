@@ -43,7 +43,9 @@ void setup() {
   fontLocation = createFont("Helvetica", 45);
   fill(255,80); 
   for (int i = 0; i < s.length; i++) {
-    s[i] = new Shape(0, 0) ;
+    s[i] = new Shape(-100, 0) ;
+    
+    
     //anglee=(cos(angle) * magnitude, sin(angle) * magnitude);
   }
 
@@ -60,7 +62,7 @@ void setup() {
   location[9] = "San Francisco";
   location[10] = "Cape Town";
   
-  
+ 
   
   
   

@@ -66,6 +66,8 @@ void draw() {
   
   //control this with part of brain [8] and [9]
   target.set(mouseX, mouseY);
+  //println(incomingValues[8]); //low Beta
+  //println(incomingValues[9]); // high Beta
   
   float angle = atan2(target.y - pos.y, target.x - pos.x);
 
@@ -86,8 +88,7 @@ void draw() {
   triangle(300, 300, windX, windY, 200, 200);
   
   
-  //println(incomingValues[8]); //low Beta
-  //println(incomingValues[9]); // high Beta
+  
    
 }
 

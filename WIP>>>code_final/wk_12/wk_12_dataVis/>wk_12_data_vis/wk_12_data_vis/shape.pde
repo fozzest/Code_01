@@ -22,11 +22,12 @@ class Shape {
   void display() {
     int minTemp = 0;
     int maxTemp = 100;
-
+     getXML();
     float temperatureColor = map(temperature, minTemp, maxTemp, 0, 255);    
 
-    c=(color(temperatureColor, 0, 255-temperatureColor));
+     c=(color(temperatureColor, 0, 255-temperatureColor));
 
+    
     float windX = 200;
     float windY = 300;
     noStroke();

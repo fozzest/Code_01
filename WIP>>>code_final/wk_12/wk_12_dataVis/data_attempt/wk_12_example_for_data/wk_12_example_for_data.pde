@@ -35,8 +35,8 @@ void setup() {
   size(1000, 500);
 
   // Set up fonts
-  fontTemperature = createFont("Helvetica", 150);
-  fontLocation = createFont("Helvetica", 36);
+  fontTemperature = createFont("Helvetica", 200);
+  fontLocation = createFont("Helvetica", 100);
   
   fill(255); 
 
@@ -80,10 +80,10 @@ void draw() {
   
  // https://processing.org/reference/createFont_.html
   textFont(fontTemperature);
-  text(temperature, textpos, 200);
+  text(temperature  +   "  F", textpos, 200);
 
   textFont(fontLocation);
-  text(location[currentLocation], textpos, 300);
+  text(location[currentLocation] , textpos, 300);
   }
   
 }
