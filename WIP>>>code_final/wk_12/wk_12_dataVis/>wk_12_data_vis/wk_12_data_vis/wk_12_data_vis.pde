@@ -73,6 +73,8 @@ void setup() {
 
 void draw() {
   fill(255,80);
+  rect(0,0,width,height);
+  
   //runGetWeatherByAddressChoreo(); 
   //getXML(); 
     
