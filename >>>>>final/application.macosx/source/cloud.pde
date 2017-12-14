@@ -40,7 +40,8 @@ void cloud() {
     if (p.life < 0) {
       particles.remove(p);
     }
-
+  }
+   pushMatrix();
     noStroke();
     fill(#D9FFD1);
     quad( 0, 100, 250, 350, 0, 400, -175, 300);
@@ -49,25 +50,21 @@ void cloud() {
     triangle(0, 400, 250, 350, 0, 100);
     fill(#329D1B, 100);
     triangle(0, 400, 0, 100, -175, 300);
-  }
+    popMatrix();
 
   fill(255);
   //https://processing.org/reference/directionalLight_.html
   //as I looked into more 3D examples and forums, I saw people utilising lights
   //introduced to create a slightly more noticable dimension to the clouds
   directionalLight(255, 255, 255, 0, 500, 0);
-  for (int i = 1; i < value44/100; i++) {
+  for (int i = 1; i < value44/150; i++) {
 
     pushMatrix();   
     translate(0, 0, 30);
     rotateX(30);
     rotateY(45);
     translate(i * 10 * tan(frameCount*0.01*i/10), i * 10 * sin(frameCount*0.02*i/10)); 
-
-
-
     cloudShape(); 
-
     popMatrix();
   }
 }

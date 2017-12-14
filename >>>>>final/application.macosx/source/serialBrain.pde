@@ -68,7 +68,7 @@ void serialEvent(Serial p) {
     //10("High Gamma");
 
     //by accessing certain parts of the string of data, we can access data that represents specific brain waves
-
+    //
 
     if (packetCount > 5) {
 

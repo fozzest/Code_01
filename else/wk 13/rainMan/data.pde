@@ -1,5 +1,5 @@
 
-//spoke with Jesse, and he recommended I create a String with returns 
+//spoke with Justin, and he recommended I create a String with returns 
 //sourcing the rows from the table
 //then choosing certain collumns, as was done previously
 //by using a String, 
@@ -23,6 +23,6 @@ String getSceneForRow(int row) {
     return "sun";
   }
 
-//in case sketch is faulty
+  //in case sketch is faulty
   return "rain";
 }

@@ -51,11 +51,8 @@ class Particle {
   }
 
   void ground(float wave) {
-    //idea of this function is to keep every particle
-    //within the defined 'box'
-
+    //idea of this function is to keep every particle within the defined 'box'
     //every location of every particle must be accounted for
-
     //thus, for ever loc. , the location is reset to exist within the canvas
     //whetehr it is above or below the canvas
 
@@ -71,12 +68,6 @@ class Particle {
       vel.x = vel.x* bounce; 
       loc.x = -canvas;
     }
-
-    //if (loc.x > canvas) { 
-    //  vel. = vel; 
-    //  loc.x = canvas;
-    //}
-
     //yaxis
 
     if (loc.y < -canvas) { 
@@ -89,10 +80,7 @@ class Particle {
       loc.y = canvas-wave;
     }
 
-
     //Zaxis
-
-
     if (loc.z < -canvas) { 
       vel.z =  vel.z* bounce ; 
       loc.z = -canvas;

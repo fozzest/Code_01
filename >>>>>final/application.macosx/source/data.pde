@@ -1,4 +1,5 @@
-
+//initially researched Daniel Shiffman's piece about Data from Procesccing website
+//After speaking with Bryan Ma, created a getRow counter in the draw loop that would qeue the code below:
 //spoke with Justin, and he recommended I create a String with returns 
 //sourcing the rows from the table
 //then choosing certain collumns, as was done previously

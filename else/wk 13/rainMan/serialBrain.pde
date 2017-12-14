@@ -41,14 +41,14 @@ void serialEvent(Serial p) {
 
   String incomingString = p.readString().trim();
   //print("Arduino: ");
-  println(incomingString);  
+  //println(incomingString);  
 
   String[] incomingValues = split(incomingString, ',');
 
   if (incomingValues.length > 1) {
     packetCount++;
 
-
+    //NOTES ABOUT BRAINSERIAL
     //here is where the incoming values are bing parsed out
     //the packet is coming accross from the serial readout via arduino in a single line of CSV data parsed with commas
     //in the brainGrapher example, used as a framework for this project

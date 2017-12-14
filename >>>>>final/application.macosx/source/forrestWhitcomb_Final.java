@@ -20,7 +20,6 @@ public class forrestWhitcomb_Final extends PApplet {
 //Forrest Whitcomb
 //Code01 Final
 
-
 //see 'data' page for weather data
 //see 'serialBrain' for brain info via arduino/mindFlex
 //see 'rain' for info on creating the wave effect
@@ -29,22 +28,17 @@ public class forrestWhitcomb_Final extends PApplet {
 
 
 
-
 ControlP5 controlP5;
 Serial serial;
-
 
 int packetCount = 0;
 int globalMax = 0;
 String scaleMode;
 Table table;
-
 String[] incomingValues;
-
 float fc;
-
 int currentRow;
-PFont text;
+PImage imgTitle;
 
 public void setup() {
   
@@ -52,10 +46,7 @@ public void setup() {
   strokeWeight(4);
   
   fc=0;
-  //https://processing.org/reference/createFont_.html
-  //though I did not end up using Temboo as a way of organising APIs, they offerred insights into other ways of
-  //understanding data, amongst other Processing functions, such as creating fonts
-  text = createFont("Helvetica", 30);
+  imgTitle = loadImage("rainy.png");
 
   //Load table info
   table = loadTable("kauai01.csv", "header");
@@ -73,17 +64,14 @@ public void setup() {
 
 String sceneName;
 
-
 public void draw() {
   if (frameCount< 150) {
-    fill(0xff092798);
-    textFont(text);
-    text("Forrest Whitcomb: The Island", width/2-200, height/2);
+    image(imgTitle, 0, 0, width, height);
   }
 
   fc = fc+1;
   println(fc+" "+sceneName);
-  if (fc == 300) {
+  if (fc == 250) {
     fc=0;
     sceneName = getSceneForRow(currentRow);
     currentRow++;
@@ -92,17 +80,16 @@ public void draw() {
     }
   }
 
-  if (sceneName=="rain") {
-    rain();
-  }
+  //if (sceneName=="rain") {
+  //  rain();
+  //}
 
-  if (sceneName=="cloud") {
-    cloud();
-  }
-  if (sceneName=="sun") {
-    sun();
-  }
-
+  //if (sceneName=="cloud") {
+  //  cloud();
+  //}
+  //if (sceneName=="sun") {
+  //  sun();
+  //}
 
   //use keys to qeue sketches manually
 
@@ -111,7 +98,6 @@ public void draw() {
       rain();
     }
   }
-
 
   if (keyPressed) {
     if (key == 'c' || key == 'C') {
@@ -167,7 +153,8 @@ public void cloud() {
     if (p.life < 0) {
       particles.remove(p);
     }
-
+  }
+   pushMatrix();
     noStroke();
     fill(0xffD9FFD1);
     quad( 0, 100, 250, 350, 0, 400, -175, 300);
@@ -176,25 +163,21 @@ public void cloud() {
     triangle(0, 400, 250, 350, 0, 100);
     fill(0xff329D1B, 100);
     triangle(0, 400, 0, 100, -175, 300);
-  }
+    popMatrix();
 
   fill(255);
   //https://processing.org/reference/directionalLight_.html
   //as I looked into more 3D examples and forums, I saw people utilising lights
   //introduced to create a slightly more noticable dimension to the clouds
   directionalLight(255, 255, 255, 0, 500, 0);
-  for (int i = 1; i < value44/100; i++) {
+  for (int i = 1; i < value44/150; i++) {
 
     pushMatrix();   
     translate(0, 0, 30);
     rotateX(30);
     rotateY(45);
     translate(i * 10 * tan(frameCount*0.01f*i/10), i * 10 * sin(frameCount*0.02f*i/10)); 
-
-
-
     cloudShape(); 
-
     popMatrix();
   }
 }
@@ -218,7 +201,8 @@ public void cloudShape() {
   sphere(30);
   popMatrix();
 }
-
+//initially researched Daniel Shiffman's piece about Data from Procesccing website
+//After speaking with Bryan Ma, created a getRow counter in the draw loop that would qeue the code below:
 //spoke with Justin, and he recommended I create a String with returns 
 //sourcing the rows from the table
 //then choosing certain collumns, as was done previously
@@ -299,11 +283,8 @@ class Particle {
   }
 
   public void ground(float wave) {
-    //idea of this function is to keep every particle
-    //within the defined 'box'
-
+    //idea of this function is to keep every particle within the defined 'box'
     //every location of every particle must be accounted for
-
     //thus, for ever loc. , the location is reset to exist within the canvas
     //whetehr it is above or below the canvas
 
@@ -319,12 +300,6 @@ class Particle {
       vel.x = vel.x* bounce; 
       loc.x = -canvas;
     }
-
-    //if (loc.x > canvas) { 
-    //  vel. = vel; 
-    //  loc.x = canvas;
-    //}
-
     //yaxis
 
     if (loc.y < -canvas) { 
@@ -337,10 +312,7 @@ class Particle {
       loc.y = canvas-wave;
     }
 
-
     //Zaxis
-
-
     if (loc.z < -canvas) { 
       vel.z =  vel.z* bounce ; 
       loc.z = -canvas;
@@ -377,12 +349,11 @@ float dropAmmount;
 
 public void rain() {
   boom = 60;
-  dropAmmount = 20;
+  dropAmmount = 20 + value2/50;
   //dropAmmount2= value77/100;;
   strokeWeight(map(value55, 0, 20000, 2, 20));
   background(0xffD3F0FF);
   if (frameCount > 10 &&(frameCount % 5) == 0) {
-
 
     //setting up rain canvas
     //random points for particles to be produced
@@ -391,17 +362,14 @@ public void rain() {
     //behaviour of particles
     PVector acc = new PVector(random(-1, 1), random(-1, 1), random(-1, 1));
 
-
     for (int i = 0; i < 80; i++) {
 
       //particles.add(new Particle(new PVector(x+, make it square, z+)));
 
       //make particles fill a 3D cube, 
-      // particles.add(new Particle(new PVector(x+1), -100+1, z+1, acc));
+      //particles.add(new Particle(new PVector(x+1), -100+1, z+1, acc));
 
       //adding a random number of particles to create 'splash'
-
-      //dropAmmount = dropAmmount + value2/5;
 
       particles.add(new Particle(new PVector(x+random(5, dropAmmount), -100+random(5, dropAmmount), z+random(5, dropAmmount)), acc));
       if (value99 > value9Old) {
@@ -412,8 +380,6 @@ public void rain() {
       //particles.add(new Particle(new PVector(800+random(2, 10), -100+random(2, 10), z+random(2, 10)), acc));
     }
   }
-
-
 
   translate(width/2, height/2-200);
   rotateY(radians(45));
@@ -433,19 +399,6 @@ public void rain() {
     //float wave = abs(sin(radians(loc.x)*sin(radians(loc.y));
     //float wave = abs(sin(radians(p.loc.x)))*sin(radians(p.loc.z))*cos(radians(p.loc.y))*100;
 
-
-    //println(value8);
-    //println(value3);
-    //if (keyPressed == true) {
-    ////println(value8);
-    ////boom = boom + value8/100;
-    //boom = boom+1;
-    //}else{
-    //  boom=50;
-    //}
-
-
-
     p.changeVel(wave);
     //create ground plane referencing curve created above^^^
     p.ground(wave);
@@ -456,7 +409,6 @@ public void rain() {
   noStroke();
   fill(0xffD9FFD1);
   quad( 0, 100, 250, 350, 0, 400, -175, 300);
-
   fill(0xff93E582, 100);
   triangle(0, 400, 250, 350, 0, 100);
   fill(0xff329D1B, 100);
@@ -533,7 +485,7 @@ public void serialEvent(Serial p) {
     //10("High Gamma");
 
     //by accessing certain parts of the string of data, we can access data that represents specific brain waves
-
+    //
 
     if (packetCount > 5) {
 
@@ -620,7 +572,6 @@ public void serialEvent(Serial p) {
 public void sun() {
   boom = 60;
   dropAmmount = 20;
-  dropAmmount2 = value77/50;
   strokeWeight(map(value55, 0, 20000, 2, 20));
   background(0xffFFF8AD);
   if (frameCount > 10 &&(frameCount % 5) == 0) {
@@ -635,10 +586,6 @@ public void sun() {
 
 
     for (int i = 0; i < 80; i++) {
-
-      //adding a random number of particles to create 'splash'
-
-      //dropAmmount = dropAmmount + value2/5;
 
       particles.add(new Particle(new PVector(x+random(5, dropAmmount), 300+random(5, dropAmmount), z+random(5, dropAmmount)), acc));
     }
@@ -668,15 +615,16 @@ public void sun() {
     if (p.life < 0) {
       particles.remove(p);
     }
-    noStroke();
-    fill(0xffD9FFD1);
-    quad( 0, 100, 250, 350, 0, 400, -175, 300);
-
-    fill(0xff93E582, 100);
-    triangle(0, 400, 250, 350, 0, 100);
-    fill(0xff329D1B, 100);
-    triangle(0, 400, 0, 100, -175, 300);
   }
+
+  noStroke();
+  fill(0xffD9FFD1);
+  quad( 0, 100, 250, 350, 0, 400, -175, 300);
+
+  fill(0xff93E582, 100);
+  triangle(0, 400, 250, 350, 0, 100);
+  fill(0xff329D1B, 100);
+  triangle(0, 400, 0, 100, -175, 300);
 }
   public void settings() {  size(1500, 750, P3D);  smooth(); }
   static public void main(String[] passedArgs) {

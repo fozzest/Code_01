@@ -1,7 +1,6 @@
 //Forrest Whitcomb
 //Code01 Final
 
-
 //see 'data' page for weather data
 //see 'serialBrain' for brain info via arduino/mindFlex
 //see 'rain' for info on creating the wave effect
@@ -10,22 +9,17 @@
 import processing.serial.*;
 import controlP5.*;
 
-
 ControlP5 controlP5;
 Serial serial;
-
 
 int packetCount = 0;
 int globalMax = 0;
 String scaleMode;
 Table table;
-
 String[] incomingValues;
-
 float fc;
-
 int currentRow;
-PFont text;
+PImage imgTitle;
 
 void setup() {
   size(1500, 750, P3D);
@@ -33,10 +27,7 @@ void setup() {
   strokeWeight(4);
   smooth();
   fc=0;
-  //https://processing.org/reference/createFont_.html
-  //though I did not end up using Temboo as a way of organising APIs, they offerred insights into other ways of
-  //understanding data, amongst other Processing functions, such as creating fonts
-  text = createFont("Helvetica", 30);
+  imgTitle = loadImage("rainy.png");
 
   //Load table info
   table = loadTable("kauai01.csv", "header");
@@ -54,17 +45,14 @@ void setup() {
 
 String sceneName;
 
-
 void draw() {
   if (frameCount< 150) {
-    fill(#092798);
-    textFont(text);
-    text("Forrest Whitcomb: The Island", width/2-200, height/2);
+    image(imgTitle, 0, 0, width, height);
   }
 
   fc = fc+1;
   println(fc+" "+sceneName);
-  if (fc == 300) {
+  if (fc == 250) {
     fc=0;
     sceneName = getSceneForRow(currentRow);
     currentRow++;
@@ -73,17 +61,16 @@ void draw() {
     }
   }
 
-  if (sceneName=="rain") {
-    rain();
-  }
+  //if (sceneName=="rain") {
+  //  rain();
+  //}
 
-  if (sceneName=="cloud") {
-    cloud();
-  }
-  if (sceneName=="sun") {
-    sun();
-  }
-
+  //if (sceneName=="cloud") {
+  //  cloud();
+  //}
+  //if (sceneName=="sun") {
+  //  sun();
+  //}
 
   //use keys to qeue sketches manually
 
@@ -92,7 +79,6 @@ void draw() {
       rain();
     }
   }
-
 
   if (keyPressed) {
     if (key == 'c' || key == 'C') {

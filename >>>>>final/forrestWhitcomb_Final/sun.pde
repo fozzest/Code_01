@@ -3,7 +3,6 @@
 void sun() {
   boom = 60;
   dropAmmount = 20;
-  dropAmmount2 = value77/50;
   strokeWeight(map(value55, 0, 20000, 2, 20));
   background(#FFF8AD);
   if (frameCount > 10 &&(frameCount % 5) == 0) {
@@ -18,10 +17,6 @@ void sun() {
 
 
     for (int i = 0; i < 80; i++) {
-
-      //adding a random number of particles to create 'splash'
-
-      //dropAmmount = dropAmmount + value2/5;
 
       particles.add(new Particle(new PVector(x+random(5, dropAmmount), 300+random(5, dropAmmount), z+random(5, dropAmmount)), acc));
     }
@@ -51,13 +46,14 @@ void sun() {
     if (p.life < 0) {
       particles.remove(p);
     }
-    noStroke();
-    fill(#D9FFD1);
-    quad( 0, 100, 250, 350, 0, 400, -175, 300);
-
-    fill(#93E582, 100);
-    triangle(0, 400, 250, 350, 0, 100);
-    fill(#329D1B, 100);
-    triangle(0, 400, 0, 100, -175, 300);
   }
+
+  noStroke();
+  fill(#D9FFD1);
+  quad( 0, 100, 250, 350, 0, 400, -175, 300);
+
+  fill(#93E582, 100);
+  triangle(0, 400, 250, 350, 0, 100);
+  fill(#329D1B, 100);
+  triangle(0, 400, 0, 100, -175, 300);
 }

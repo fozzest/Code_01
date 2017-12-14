@@ -1,6 +1,4 @@
 
-float rate;
-float xC;
 
 void cloud() {
   boom = 60;
@@ -9,10 +7,6 @@ void cloud() {
   strokeWeight(map(value55, 0, 20000, 2, 20));
   background(200);
   if (frameCount > 10 &&(frameCount % 5) == 0) {
-
-
-    //setting up rain canvas
-    //random points for particles to be produced
     float x = random(-canvas, canvas);
     float z = random(-canvas, canvas);
     //behaviour of particles
@@ -21,9 +15,7 @@ void cloud() {
 
     for (int i = 0; i < 80; i++) {
 
-
       particles.add(new Particle(new PVector(x+random(5, dropAmmount), 400+random(5, dropAmmount), z+random(5, dropAmmount)), acc));
-
     }
   }
 
@@ -34,12 +26,12 @@ void cloud() {
   for (int i = 0; i < particles.size (); i++) {
     Particle p = (Particle) particles.get(i);
     p.update();
-    //set rain roce                 //change with weather
+    //set rain roce                 
     p.force(new PVector(0, 0.5, 0));
 
     boom =  value88/30;
 
-                                                                                                                  //change with brain
+
     float wave = abs(sin(radians(p.loc.x+frameCount)))*sin(radians(p.loc.z+frameCount*2))*cos(radians(p.loc.y))*boom;
 
     p.changeVel(wave);
@@ -48,6 +40,7 @@ void cloud() {
     if (p.life < 0) {
       particles.remove(p);
     }
+    
     noStroke();
     fill(#D9FFD1);
     quad( 0, 100, 250, 350, 0, 400, -175, 300);
@@ -59,19 +52,42 @@ void cloud() {
   }
 
   fill(255);
+  //https://processing.org/reference/directionalLight_.html
+  //as I looked into more 3D examples and forums, I saw people utilising lights
+  //introduced to create a slightly more noticable dimension to the clouds
   directionalLight(255, 255, 255, 0, 500, 0);
-  for (int i = 1; i < mouseX/10; i++) {
+  for (int i = 1; i < value44/100; i++) {
 
     pushMatrix();   
     translate(0, 0, 30);
     rotateX(30);
     rotateY(45);
     translate(i * 10 * tan(frameCount*0.01*i/10), i * 10 * sin(frameCount*0.02*i/10)); 
-    
 
 
-    //cloudShape(); 
+
+    cloudShape(); 
 
     popMatrix();
   }
+}
+
+//https://processing.org/reference/sphere_.html
+void cloudShape() {
+  pushMatrix();   
+  translate(0, 0, 0);
+  sphere(50);
+  popMatrix();
+  pushMatrix();   
+  translate(-40, 0, 0);
+  sphere(30);
+  popMatrix();
+  pushMatrix();   
+  translate(20, 10, 5);
+  sphere(40);
+  popMatrix();
+  pushMatrix();   
+  translate(-10, -20, -15);
+  sphere(30);
+  popMatrix();
 }
