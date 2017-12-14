@@ -349,7 +349,7 @@ float dropAmmount;
 
 public void rain() {
   boom = 60;
-  dropAmmount = 20 + value2/50;
+
   //dropAmmount2= value77/100;;
   strokeWeight(map(value55, 0, 20000, 2, 20));
   background(0xffD3F0FF);
@@ -370,7 +370,7 @@ public void rain() {
       //particles.add(new Particle(new PVector(x+1), -100+1, z+1, acc));
 
       //adding a random number of particles to create 'splash'
-
+      dropAmmount = 20 + value2/50;
       particles.add(new Particle(new PVector(x+random(5, dropAmmount), -100+random(5, dropAmmount), z+random(5, dropAmmount)), acc));
       if (value99 > value9Old) {
         dropAmmount2 = value99/100;
@@ -414,6 +414,7 @@ public void rain() {
   fill(0xff329D1B, 100);
   triangle(0, 400, 0, 100, -175, 300);
 }
+
 
 float value00 = 10;
 float value11 = 10;
