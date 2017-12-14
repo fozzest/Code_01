@@ -1,5 +1,7 @@
-
+// how the brain information is passed from the MindFlex to Processing
+//most code is referenced from link below:
 //  https://github.com/kitschpatrol/Arduino-Brain-Library
+//serial information brought over serial.list [3]
 
 
 #include <Brain.h>
