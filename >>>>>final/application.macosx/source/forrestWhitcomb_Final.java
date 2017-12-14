@@ -80,16 +80,16 @@ public void draw() {
     }
   }
 
-  //if (sceneName=="rain") {
-  //  rain();
-  //}
+  if (sceneName=="rain") {
+    rain();
+  }
 
-  //if (sceneName=="cloud") {
-  //  cloud();
-  //}
-  //if (sceneName=="sun") {
-  //  sun();
-  //}
+  if (sceneName=="cloud") {
+    cloud();
+  }
+  if (sceneName=="sun") {
+    sun();
+  }
 
   //use keys to qeue sketches manually
 
@@ -626,6 +626,7 @@ public void sun() {
   fill(0xff329D1B, 100);
   triangle(0, 400, 0, 100, -175, 300);
 }
+
   public void settings() {  size(1500, 750, P3D);  smooth(); }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "forrestWhitcomb_Final" };

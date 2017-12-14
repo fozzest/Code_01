@@ -61,16 +61,16 @@ void draw() {
     }
   }
 
-  //if (sceneName=="rain") {
-  //  rain();
-  //}
+  if (sceneName=="rain") {
+    rain();
+  }
 
-  //if (sceneName=="cloud") {
-  //  cloud();
-  //}
-  //if (sceneName=="sun") {
-  //  sun();
-  //}
+  if (sceneName=="cloud") {
+    cloud();
+  }
+  if (sceneName=="sun") {
+    sun();
+  }
 
   //use keys to qeue sketches manually
 
