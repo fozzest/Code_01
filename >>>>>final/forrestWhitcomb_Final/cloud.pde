@@ -40,7 +40,7 @@ void cloud() {
     if (p.life < 0) {
       particles.remove(p);
     }
-    
+
     noStroke();
     fill(#D9FFD1);
     quad( 0, 100, 250, 350, 0, 400, -175, 300);

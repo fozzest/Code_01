@@ -83,7 +83,7 @@ public void draw() {
 
   fc = fc+1;
   println(fc+" "+sceneName);
-  if (fc == 100) {
+  if (fc == 300) {
     fc=0;
     sceneName = getSceneForRow(currentRow);
     currentRow++;
@@ -104,7 +104,7 @@ public void draw() {
   }
 
 
-//use keys to qeue sketches manually
+  //use keys to qeue sketches manually
 
   if (keyPressed) {
     if (key == 'r' || key == 'R') {
@@ -167,7 +167,7 @@ public void cloud() {
     if (p.life < 0) {
       particles.remove(p);
     }
-    
+
     noStroke();
     fill(0xffD9FFD1);
     quad( 0, 100, 250, 350, 0, 400, -175, 300);
@@ -218,7 +218,6 @@ public void cloudShape() {
   sphere(30);
   popMatrix();
 }
-
 
 //spoke with Justin, and he recommended I create a String with returns 
 //sourcing the rows from the table

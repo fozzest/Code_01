@@ -64,7 +64,7 @@ void draw() {
 
   fc = fc+1;
   println(fc+" "+sceneName);
-  if (fc == 100) {
+  if (fc == 300) {
     fc=0;
     sceneName = getSceneForRow(currentRow);
     currentRow++;
@@ -85,7 +85,7 @@ void draw() {
   }
 
 
-//use keys to qeue sketches manually
+  //use keys to qeue sketches manually
 
   if (keyPressed) {
     if (key == 'r' || key == 'R') {
